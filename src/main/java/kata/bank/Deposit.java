@@ -1,4 +1,4 @@
-package kata.model;
+package kata.bank;
 
 public class Deposit extends Operation {
 
@@ -6,17 +6,12 @@ public class Deposit extends Operation {
         super(amount, description);
     }
 
-    public Deposit make(Double amount, String description) {
+    public static Deposit make(Double amount, String description) {
         return new Deposit(amount, description);
     }
 
     public Double amountOf() {
         return getAmount();
-    }
-
-    @Override
-    public String format() {
-        return String.format(FORMATTER, getDescription(), null, getAmount(), getOperationDate());
     }
 
 }
