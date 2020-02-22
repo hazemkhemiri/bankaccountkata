@@ -29,4 +29,5 @@ public abstract class Operation {
         return description;
     }
 
+    public abstract Double amountOf();
 }

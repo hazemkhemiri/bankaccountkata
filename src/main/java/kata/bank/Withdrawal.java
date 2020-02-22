@@ -6,9 +6,12 @@ public class Withdrawal extends Operation {
         super(amount, description);
     }
 
-    public Withdrawal make(Double amount, String description) {
+    public static Withdrawal make(Double amount, String description) {
         return new Withdrawal(amount, description);
     }
 
-
+    @Override
+    public Double amountOf() {
+        return (-1) * getAmount();
+    }
 }
