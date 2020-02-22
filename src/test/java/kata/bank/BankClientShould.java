@@ -85,7 +85,7 @@ public class BankClientShould {
 
 
     @Test(expected = BusinessException.class)
-    public void exceed_his_overdraft_when_take_money() throws BusinessException {
+    public void do_not_exceed_his_overdraft_when_take_money() throws BusinessException {
 
         BankAccount account = given_account();
 
