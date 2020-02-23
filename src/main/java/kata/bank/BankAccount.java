@@ -15,8 +15,8 @@ public class BankAccount {
         operations = new ArrayList();
     }
 
-    public static BankAccount createAccount(String iban, Double overDraft) {
-        return new BankAccount(iban, overDraft);
+    public static BankAccount createAccount(String iban, Double overdraft) {
+        return new BankAccount(iban, overdraft);
     }
 
     public void makeDeposit(Double amount, String description) throws BusinessException {
@@ -54,4 +54,12 @@ public class BankAccount {
         }
     }
 
+    public String print() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("account   : ").append(accountIdentifier).append('\n');
+        builder.append("overdraft : ").append(overDraft).append('\n');
+        operations.forEach( x -> builder.append(x.format()) );
+        builder.append("balance   : ").append(computeBalance()).append('\n');
+        return builder.toString();
+    }
 }

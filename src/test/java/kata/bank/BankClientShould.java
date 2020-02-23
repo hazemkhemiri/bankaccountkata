@@ -44,7 +44,6 @@ public class BankClientShould {
         assertEquals(new Double(20), account.getOperations().get(0).getAmount());
         assertEquals(new Double(10), account.getOperations().get(1).getAmount());
         assertEquals(new Double(30), account.computeBalance());
-
     }
 
     @Test(expected = BusinessException.class)
@@ -83,15 +82,32 @@ public class BankClientShould {
         assertEquals(new Double(-20), account.computeBalance());
     }
 
-
     @Test(expected = BusinessException.class)
-    public void do_not_exceed_his_overdraft_when_take_money() throws BusinessException {
+    public void not_exceed_his_overdraft_when_take_money() throws BusinessException {
 
         BankAccount account = given_account();
 
         account.makeWithdrawal(200.0, "1st withdrawal");
         account.makeWithdrawal(900.0, "2nd withdrawal");
+    }
 
+    @Test
+    public void can_see_all_operation_in_his_account() throws BusinessException {
+
+        BankAccount account = given_account();
+
+        account.makeDeposit(90.0, "1st deposit");
+        account.makeDeposit(10.0, "2nd deposit");
+        account.makeWithdrawal(20.0, "1st withdrawal");
+        account.makeDeposit(80.0, "3rd deposit");
+        account.makeWithdrawal(90.0, "2nd withdrawal");
+
+        String displayed = account.print();
+        assertTrue(displayed.contains("90.00"));
+        assertTrue(displayed.contains("balance   : 70.0"));
+        assertTrue(displayed.contains("2nd withdrawal\t   nu\t90.00"));
+        assertTrue(displayed.contains("overdraft : 1000.0"));
+        System.out.println(displayed);
     }
 
 

@@ -1,5 +1,7 @@
 package kata.bank;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class Operation {
@@ -7,7 +9,10 @@ public abstract class Operation {
     private Double amount;
     private Date operationDate;
 
-    private Operation(Double amount, String description, Date date) {
+    protected static String LINE_FORMATTER = "%20s\t%5.2f\t%5.2f\t%s\n";
+    protected static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    protected Operation(Double amount, String description, Date date) {
         this.amount = amount;
         this.operationDate = date;
         this.description = description;
@@ -30,4 +35,6 @@ public abstract class Operation {
     }
 
     public abstract Double amountOf();
+
+    public abstract String format();
 }
