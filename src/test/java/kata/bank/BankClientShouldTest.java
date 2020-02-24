@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class BankClientShould {
+public class BankClientShouldTest {
 
     private BankAccount given_account() {
         return BankAccount.createAccount("00002555000555");
