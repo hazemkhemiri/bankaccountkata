@@ -12,7 +12,7 @@ public class BankAccount {
     private BankAccount(String accountIdentifier, Double overDraft) {
         this.accountIdentifier = accountIdentifier;
         this.overDraft = overDraft;
-        operations = new ArrayList();
+        operations = new ArrayList<>();
     }
 
     public static BankAccount createAccount(String iban, Double overdraft) {

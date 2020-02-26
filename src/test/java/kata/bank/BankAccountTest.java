@@ -6,14 +6,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class BankClientShouldTest {
+public class BankAccountTest {
 
     private BankAccount given_account() {
         return BankAccount.createAccount("00002555000555", 1000.0);
     }
 
     @Test
-    public void be_able_to_create_account() {
+    public void client_should_be_able_to_create_account() {
 
         BankAccount account = given_account();
 
@@ -24,7 +24,7 @@ public class BankClientShouldTest {
 
 
     @Test
-    public void make_deposit_to_his_account() throws BusinessException {
+    public void client_should_make_deposit_to_his_account() throws BusinessException {
 
         BankAccount account = given_account();
 
@@ -34,7 +34,8 @@ public class BankClientShouldTest {
         assertEquals(new Double(20), account.getOperations().get(0).getAmount());
     }
 
-    public void get_balance_of_his_account() throws BusinessException {
+    @Test
+    public void should_get_balance_of_his_account() throws BusinessException {
         BankAccount account = given_account();
 
         account.makeDeposit(20.0, "1st deposit");
@@ -47,7 +48,7 @@ public class BankClientShouldTest {
     }
 
     @Test(expected = BusinessException.class)
-    public void not_set_a_null_deposit() throws BusinessException {
+    public void should_not_set_a_null_deposit() throws BusinessException {
 
         BankAccount account = given_account();
 
@@ -55,7 +56,7 @@ public class BankClientShouldTest {
     }
 
     @Test(expected = BusinessException.class)
-    public void not_set_a_zero_deposit() throws BusinessException {
+    public void should_not_set_a_zero_deposit() throws BusinessException {
 
         BankAccount account = given_account();
 
@@ -63,7 +64,7 @@ public class BankClientShouldTest {
     }
 
     @Test(expected = BusinessException.class)
-    public void not_set_a_negative_withdrawal() throws BusinessException {
+    public void should_not_set_a_negative_withdrawal() throws BusinessException {
 
         BankAccount account = given_account();
 
@@ -71,7 +72,7 @@ public class BankClientShouldTest {
     }
 
     @Test
-    public void take_money_from_his_account() throws BusinessException {
+    public void should_be_able_to_take_money_from_his_account() throws BusinessException {
 
         BankAccount account = given_account();
 
@@ -83,7 +84,7 @@ public class BankClientShouldTest {
     }
 
     @Test(expected = BusinessException.class)
-    public void not_exceed_his_overdraft_when_take_money() throws BusinessException {
+    public void should_not_exceed_his_overdraft_when_take_money() throws BusinessException {
 
         BankAccount account = given_account();
 
@@ -92,7 +93,7 @@ public class BankClientShouldTest {
     }
 
     @Test
-    public void can_see_all_operation_in_his_account() throws BusinessException {
+    public void should_can_see_all_operation_in_his_account() throws BusinessException {
 
         BankAccount account = given_account();
 
