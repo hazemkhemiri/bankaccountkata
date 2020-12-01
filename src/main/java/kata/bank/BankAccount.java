@@ -42,7 +42,7 @@ public class BankAccount {
         operations.add(Withdrawal.make(amount, description));
     }
 
-    private static void checkAmount(Double amount) throws BusinessException {
+    private void checkAmount(Double amount) throws BusinessException {
         if (amount == null || amount <= 0) {
             throw new BusinessException(BusinessException.NOT_VALID);
         }

@@ -16,6 +16,7 @@ public class Deposit extends Operation {
         return new Deposit(amount, description);
     }
 
+    @Override
     public Double amountOf() {
         return getAmount();
     }
